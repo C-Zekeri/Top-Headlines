@@ -1,0 +1,37 @@
+.flex {
+    display: flex;
+}
+
+.flex__center {
+    align-items: center;
+    justify-content: center;
+}
+
+.flex__column {
+    flex-direction: column;
+}
+
+input {
+    width: 50%;
+    height: 2.5rem;
+    padding: 0 0.5rem;
+    border: black 2px solid;
+}
+
+.input__search-btn {
+    height: 2.5rem;
+    width: fit-content;
+    padding: 0 0.4rem;
+    border: black 2px solid;
+    border-left: none;
+    cursor: pointer;
+}
+
+.input__search-btn:hover {
+    background-color: rgba(165, 80, 49, 0.808);
+}
+
+img {
+    height: 1rem;
+    width: 1rem;
+}
