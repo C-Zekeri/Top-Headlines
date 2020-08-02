@@ -9,5 +9,11 @@ function searchTopic() {
 
     fetch(`https://newsapi.org/v2/top-headlines?q=${searchQuery}&apiKey=c322fecc82854c4a93cbeb3b16b60fd9`)
         .then(response => response.json())
-        .then(data => console.log(articles));
+        .then(articles => console.log(articles))
+        .then (ouptutContent())
+        .catch(error => console.log(error));
 }
+
+function outputContent() {
+
+} 
