@@ -15,12 +15,13 @@ function searchTopic() {
         .then(response => response.json())
         .then(array => {
             let articles = array.articles;
-            for ( let i = 0; i<articles.length; i++) {                
+            for (let i = 0; i < articles.length; i++) {
                 function createElement(name, element, className, parentClassName) {
                     name = document.createElement(`${element}`);
                     name.classList.add(`${className}`);
                     let parentClass = document.querySelectorAll(`.${parentClassName}`);
                     parentClass[i].appendChild(name);
+                    console.log(i);
                 }
 
                 function populate(name, array, key) {
@@ -30,8 +31,9 @@ function searchTopic() {
                 }
 
                 createElement('article', 'div', 'article', 'output');
-                createElement('articleTitle', 'a', 'article__title', 'article');
+                createElement('articleTitle', 'p', 'article__title', 'article');
                 createElement('articleDescription', 'p', 'article__description', 'article');
+                createElement('readMore', 'a', 'btn', 'article');
                 createElement('articleSource', 'a', 'article__source', 'article');
                 createElement('articlePubDate', 'p', 'article__date', 'article');
 
@@ -40,12 +42,14 @@ function searchTopic() {
                 populate('article__date', articles, 'publishedAt');
 
                 let articleSource = document.querySelectorAll('.article__source');
-                let articleTitle = document.querySelectorAll('.article__title');
-                articleTitle[i].href = articles[i].url;
-                articleSource.innerText = articles[i].source.name;
+                let readMore = document.querySelectorAll('.btn');
+                readMore[i].href = articles[i].url;
+                readMore[i].innerText = "Read More";
+                readMore[i].classList.add('btn-info');
+                articleSource[i].innerText = articles[i].source.name;
                 articleSource[i].href = articles[i].source.url;
 
-                searchQuery = "";
+                input.value = "";
             }
         })
         .catch(error => console.log(error));

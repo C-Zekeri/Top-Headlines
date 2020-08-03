@@ -1,3 +1,7 @@
+body {
+    padding: 1rem;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -50,4 +54,8 @@ img {
     background-color: rgba(182, 177, 177, 0.884);
     padding: 1rem;
     margin-top: 1rem;
+}
+
+.article__title {
+    font-weight: bold;
 }
