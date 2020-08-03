@@ -4,33 +4,29 @@ const outputSection = document.querySelector('.output');
 
 searchButton.addEventListener('click', searchTopic);
 
-
-
 function searchTopic() {
+    while (outputSection.firstChild) {
+        outputSection.removeChild(outputSection.firstChild);
+    }
+
     let searchQuery = input.value;
 
     fetch(`https://gnews.io/api/v3/search?q=${searchQuery}&token=d5640825b9574f46716962e062c5e996`)
         .then(response => response.json())
         .then(array => {
             let articles = array.articles;
-            for (i = 0; i < articles.length; i++) {
+            for ( let i = 0; i<articles.length; i++) {                
                 function createElement(name, element, className, parentClassName) {
                     name = document.createElement(`${element}`);
                     name.classList.add(`${className}`);
-                    let parentClass = document.querySelectorAll(`.${parentClassName}`)
+                    let parentClass = document.querySelectorAll(`.${parentClassName}`);
                     parentClass[i].appendChild(name);
                 }
 
                 function populate(name, array, key) {
                     name = document.querySelectorAll(`.${name}`);
-                    name[i].innerText = (array[i] + '.' + key);
-                    console.log(name.innerText);
-                    console.log(array);
-                }
-
-                function link(name, array, key) {
-                    name = document.querySelectorAll(`.${name}`);
-                    name[i].href = (array[i] + '.' + key);
+                    let obj = array[i];
+                    name[i].innerText = obj[key];
                 }
 
                 createElement('article', 'div', 'article', 'output');
@@ -41,11 +37,14 @@ function searchTopic() {
 
                 populate('article__title', articles, 'title');
                 populate('article__description', articles, 'description');
-                populate('article__source', articles, 'source.name');
                 populate('article__date', articles, 'publishedAt');
 
-                link('article__title', articles, 'url');
-                link('article__source', articles, 'source.url');
+                let articleSource = document.querySelectorAll('.article__source');
+                let articleTitle = document.querySelectorAll('.article__title');
+                articleTitle[i].href = articles[i].url;
+                articleSource.innerText = articles[i].source.name;
+                articleSource[i].href = articles[i].source.url;
+
                 searchQuery = "";
             }
         })

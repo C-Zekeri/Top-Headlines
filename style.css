@@ -1,3 +1,13 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: rgba(82, 31, 12, 0.993);
+    text-decoration: none;
+}
+
 .flex {
     display: flex;
 }
@@ -28,10 +38,16 @@ input {
 }
 
 .input__search-btn:hover {
-    background-color: rgba(165, 80, 49, 0.808);
+    background-color: rgba(219, 146, 120, 0.808);
 }
 
 img {
     height: 1rem;
     width: 1rem;
+}
+
+.article {
+    background-color: rgba(182, 177, 177, 0.884);
+    padding: 1rem;
+    margin-top: 1rem;
 }
