@@ -15,13 +15,12 @@ function searchTopic() {
         .then(response => response.json())
         .then(array => {
             let articles = array.articles;
-            for (let i = 0; i < articles.length; i++) {
-                function createElement(name, element, className, parentClassName) {
+            for (let i = 0; i < articles.length; i++) {               
+                function createElement(name, element, className, parentClassName, parentClassKey) {
                     name = document.createElement(`${element}`);
                     name.classList.add(`${className}`);
-                    let parentClass = document.querySelectorAll(`.${parentClassName}`);
-                    parentClass[i].appendChild(name);
-                    console.log(i);
+                    let parentClass = document.getElementsByClassName(`${parentClassName}`);
+                    parentClass[parentClassKey].appendChild(name);
                 }
 
                 function populate(name, array, key) {
@@ -30,12 +29,12 @@ function searchTopic() {
                     name[i].innerText = obj[key];
                 }
 
-                createElement('article', 'div', 'article', 'output');
-                createElement('articleTitle', 'p', 'article__title', 'article');
-                createElement('articleDescription', 'p', 'article__description', 'article');
-                createElement('readMore', 'a', 'btn', 'article');
-                createElement('articleSource', 'a', 'article__source', 'article');
-                createElement('articlePubDate', 'p', 'article__date', 'article');
+                createElement('article', 'div', 'article', 'output', 0);
+                createElement('articleTitle', 'p', 'article__title', 'article', i);
+                createElement('articleDescription', 'p', 'article__description', 'article', i);
+                createElement('readMore', 'a', 'btn', 'article', i);
+                createElement('articleSource', 'a', 'article__source', 'article', i);
+                createElement('articlePubDate', 'p', 'article__date', 'article', i);
 
                 populate('article__title', articles, 'title');
                 populate('article__description', articles, 'description');
