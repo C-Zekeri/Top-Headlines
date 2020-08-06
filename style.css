@@ -2,16 +2,6 @@ body {
     padding: 1rem;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-}
-
-a:hover {
-    color: rgba(82, 31, 12, 0.993);
-    text-decoration: none;
-}
-
 .flex {
     display: flex;
 }
@@ -25,11 +15,31 @@ a:hover {
     flex-direction: column;
 }
 
+a {
+    color: black;
+    margin-right: .5rem;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgba(82, 31, 12, 0.993);
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+}
+
 input {
-    width: 50%;
+    width: 50vw;
     height: 2.5rem;
     padding: 0 0.5rem;
     border: black 2px solid;
+}
+
+input:focus {
+    border-radius: 0;
+    outline: none;
 }
 
 .input__search-btn {
@@ -52,10 +62,23 @@ img {
 
 .article {
     background-color: rgba(182, 177, 177, 0.884);
-    padding: 1rem;
     margin-top: 1rem;
+    max-width: 70vw;
+    padding: 1rem;
 }
 
 .article__title {
     font-weight: bold;
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        text-align: left;
+    }
+    input {
+        width: 60vw;
+    }
+    .article {
+        max-width: 100%;
+    }
 }
